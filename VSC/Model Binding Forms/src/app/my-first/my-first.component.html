@@ -1,0 +1,22 @@
+<form>
+  <div class="form-group">
+    <label for="txfirstname">First Name</label>
+    <input type="text" class="form-control" id="txfirstname" 
+    [(ngModel)]="User.FirstName" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <div class="form-group">
+      <label for="txlasttname">Last Name</label>    
+      <input type="text" class="form-control" id="txlastname" 
+      [(ngModel)]="User.LastName" [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <button class="btn btn-primary" (click)="AddUser()" >Add</button>
+
+  <ul class="list-group">
+    <li *ngFor="let user of Users; index as i; ">
+        {{ user.FirstName }} - {{ user.LastName }}
+        <button class="btn btn-danger" (click)="Delete(i)">X</button>
+    </li>
+  </ul>
+</form>
