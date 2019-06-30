@@ -1,0 +1,39 @@
+<form #userForm="ngForm">
+{{ userForm.valid }}
+
+    <div class="form-group">
+        <label for="txfirstname">First Name</label>
+        <input type="text" required #txfirstname="ngModel" [class.is-invalid]="txfirstname.invalid && txlastname.touched"
+        class="form-control" id="txfirstname" [(ngModel)]="User.FirstName" [ngModelOptions]="{standalone: true}" >
+      </div>
+
+    
+      <div class="form-group">
+          <label for="txlasttname">Last Name</label>    
+          <input type="text" required #txlastname="ngModel" [class.is-invalid]="txlastname.invalid && txlastname.touched"
+          class="form-control" id="txlastname" [(ngModel)]="User.LastName" [ngModelOptions]="{standalone: true}">
+      </div>
+      
+      <div class="form-group">
+          <label for="txEmail">Email</label>    
+          <input type="text" 
+          required 
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          #txEmail="ngModel" 
+          [class.is-invalid]="txEmail.invalid && txEmail.touched"
+          class="form-control" id="txEmail" [(ngModel)]="User.Email" [ngModelOptions]="{standalone: true}">
+          <small [class.d-none]="txEmail.valid || txEmail.untouched" class="text-danger" >Email not correct</small> 
+
+      </div>
+
+
+      <button [disabled]="userForm.form.invalid"  class="btn btn-primary" (click)="AddUser()" >Add</button>
+    
+      <ul class="list-group">
+        <li *ngFor="let user of Users; index as i; ">
+            {{ user.FirstName }} - {{ user.LastName }} - {{ user.Email }}
+            <button class="btn btn-danger" (click)="Delete(i)">X</button>
+        </li>
+      </ul>
+    </form>
+    
