@@ -1,0 +1,40 @@
+<form (ngSubmit)="AddUser()" [formGroup]="userForm">
+  <div class="form-group">
+    <label for="txfirstname">First Name</label>
+    <input type="text" class="form-control" id="txfirstname" formControlName="firstName" 
+    [class.is-invalid]="userForm.get('firstName').invalid  && userForm.get('firstName').touched"
+    formControlName="firstName" >
+  </div>
+ 
+  <div class="form-group">
+      <label for="txlasttname">Last Name</label>    
+      <input type="text" class="form-control" id="txlastname" formControlName="lastName" 
+      [class.is-invalid]="userForm.get('lastName').invalid  && userForm.get('lastName').touched"
+      >
+  </div>
+
+
+  <div class="form-group">
+    <label for="txEmail">Email</label>    
+    <input type="text" class="form-control" id="txEmail" formControlName="email" 
+    [class.is-invalid]="userForm.get('email').errors"
+    >
+</div>
+
+<div class="form-group">
+  <label for="txAge">Age</label>    
+  <input type="text" class="form-control" id="txAge" formControlName="age" 
+  [class.is-invalid]="userForm.get('age').errors"
+  >
+</div>
+
+
+  <button type="submit" class="btn btn-primary">Add</button>
+
+  <ul class="list-group">
+    <li *ngFor="let user of Users; index as i; ">
+        {{ user }}
+        <button class="btn btn-danger" (click)="Delete(i)">X</button>
+    </li>
+  </ul>
+</form>
