@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
+import { FirstComponent } from './component/first/first.component';
+import { SecondComponent } from './component/second/second.component';
 
 
 @NgModule({
